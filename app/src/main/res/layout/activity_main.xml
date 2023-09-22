@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bannerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ede9e8"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/inboxIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/wishlist_icon"
+            android:contentDescription="Inbox Icon" />
+
+        <TextView
+            android:id="@+id/bannerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wishlist"
+            android:textColor="#000"
+            android:fontFamily="@font/cormorant_garamond_semibold"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wishlistRecyclerVIew"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="15dp"
+        android:nestedScrollingEnabled="false" />
+    <include layout="@layout/add_wish" />
+
+
+
+</LinearLayout>
