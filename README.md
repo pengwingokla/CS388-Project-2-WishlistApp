@@ -1,4 +1,4 @@
-# Android Project 2 - *Name of App Here*
+# Android Project 2 - Wishlist App
 
 Submitted by: **Your Name Here**
 
@@ -15,8 +15,8 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Wishlist app is 🎨 **customized** 🎨
-- [ ] User can delete an item by long pressing on the item
+- [x] Wishlist app is 🎨 **customized** 🎨
+- [x] User can delete an item by long pressing on the item
 - [x] User can open an item's URL by clicking on the item
 
 ## Video Walkthrough
