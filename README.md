@@ -1,6 +1,6 @@
 # Android Project 2 - Wishlist App
 
-Submitted by: **Your Name Here**
+Submitted by: UYEN NGUYEN
 
 **Name of your app** is a wishlist app that helps the user keep track of what they want to buy.
 
@@ -23,6 +23,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 https://clipchamp.com/watch/rt1flTxVyRj
+https://drive.google.com/file/d/1KQ-4qMN_DugfqF77hhn8_KT5VONUNVIX/view?usp=sharing
 
 
 ## Notes
