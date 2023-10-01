@@ -2,46 +2,54 @@ package com.example.cs388_project_2_wishlistapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cs388_project_2_wishlistapp.databinding.ActivityMainBinding
 import WishlistAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.recyclerview.widget.RecyclerView
+import android.widget.Button
+import android.widget.EditText
+
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
-    private val wishList = mutableListOf<WishItem>()
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var wishListAdapter: WishlistAdapter
+
+    private lateinit var itemList: ArrayList<WishlistAdapter.WishlistItem>
+    private lateinit var adapter: WishlistAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        wishListAdapter = WishlistAdapter(wishList)
-        WishlistRecycleView.adapter = wishListAdapter
-        WishlistRecycleView.layoutManager = LinearLayoutManager(this)
+        setContentView(R.layout.activity_main)
 
-        binding.btnAdd.setOnClickListener {
-            val itemName = binding.itemNameField.text.toString()
-            val itemURL = binding.urlField.text.toString()
-            val itemPrice = binding.priceField.text.toString().toDoubleOrNull() ?: 0.0
+        val recyclerView = findViewById<RecyclerView>(R.id.WishlistRecyclerView)
+        itemList = ArrayList()
 
-            if (itemName.isNotEmpty() && itemURL.isNotEmpty()) {
-                val wishItem = WishItem(itemName, itemURL, itemPrice)
-                wishList.add(wishItem)
-                wishListAdapter.notifyItemInserted(wishList.size - 1)
-                clearFields()
-            }
+        // Initialize the adapter and set it to the RecyclerView
+        adapter = WishlistAdapter(itemList)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val btnAdd = findViewById<Button>(R.id.btnAdd)
+        btnAdd.setOnClickListener {
+            // Get user input from EditText fields
+            val itemName = findViewById<EditText>(R.id.itemNameField).text.toString()
+            val itemUrl = findViewById<EditText>(R.id.urlField).text.toString()
+            val itemPrice = findViewById<EditText>(R.id.priceField).text.toString()
+
+            // Create a new WishlistItem and add it to the itemList
+            val newItem = WishlistAdapter.WishlistItem(
+                itemName,
+                itemUrl,
+                itemPrice,
+                R.drawable.chobani
+            )
+            itemList.add(newItem)
+
+            // Notify the adapter that the data has changed
+            adapter.notifyDataSetChanged()
+
+            // Clear the input fields
+            findViewById<EditText>(R.id.itemNameField).text.clear()
+            findViewById<EditText>(R.id.urlField).text.clear()
+            findViewById<EditText>(R.id.priceField).text.clear()
         }
     }
-
-    private fun clearFields() {
-        binding.itemNameField.text.clear()
-        binding.urlField.text.clear()
-        binding.priceField.text.clear()
-    }
 }
-
-    }
-    }
-
-data class WishItem(val name: String, val url: String, val price: Double)
